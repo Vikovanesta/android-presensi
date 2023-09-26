@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
-            android:text="Presensi"
+            android:text="@string/presensi"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -46,13 +46,17 @@
         <Spinner
             android:id="@+id/spinner_presensi"
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/et_keterangan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Keterangan"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:paddingHorizontal="32dp"
+            android:background="@drawable/rounded_gray"
+            android:hint="@string/keterangan"
             android:visibility="gone" />
         
         <Button
@@ -62,7 +66,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/btn_background"
             app:backgroundTint="@color/primary"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textSize="18sp"
             android:textColor="#FFFFFF" />
 

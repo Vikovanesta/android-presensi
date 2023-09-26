@@ -18,60 +18,52 @@ class MainActivity : AppCompatActivity() {
 
         with(binding) {
 
-//                btnShowTimePicker.setOnClickListener {
-//                    val timePicker = TimePicker()
-//                    timePicker.show(supportFragmentManager, "time picker")
-//                }
-//
-//                btnShowCalendar.setOnClickListener {
-//                    val datePicker = DatePicker()
-//                    datePicker.show(supportFragmentManager, "date picker")
-//                }
-
-//            timePicker.setOnTimeChangedListener {_, hourOfDay, minute ->
-//                val selectedTime = "$hourOfDay:$minute"
-//                Toast.makeText(
-//                    this@MainActivity,
-//                    selectedTime, Toast.LENGTH_SHORT
-//                ).show()
-//            }
-
-
-//            datePicker.init(
-//                datePicker.year,
-//                datePicker.month,
-//                datePicker.dayOfMonth
-//            ) {_, year, month, dayOfMonth ->
-//                val selectedDate = "$dayOfMonth/${month + 1}/$year"
-//                Toast.makeText(
-//                    this@MainActivity,
-//                    selectedDate, Toast.LENGTH_SHORT
-//                ).show()
-//            }
-
             val presensi = resources.getStringArray(R.array.presensi)
-            val adapterPresensi = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_spinner_item, presensi)
+            val adapterPresensi = ArrayAdapter<String>(
+                this@MainActivity,
+                android.R.layout.simple_spinner_item,
+                presensi
+            )
             spinnerPresensi.adapter = adapterPresensi
 
-            //get selecetd using item on item selected Listener
             spinnerPresensi.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                         if (presensi[p2] == "Hadir Tepat Waktu") {
                             etKeterangan.visibility = View.GONE
-                        }else{
+                        } else {
                             etKeterangan.visibility = View.VISIBLE
                         }
-                        Toast.makeText(
-                            this@MainActivity,
-                            presensi[p2], Toast.LENGTH_SHORT
-                        ).show()
                     }
 
                     override fun onNothingSelected(p0: AdapterView<*>?) {
-                        TODO("Not yet implemented")
+
                     }
                 }
+
+            btnSubmit.setOnClickListener {
+                val presensi = spinnerPresensi.selectedItem.toString()
+                val keterangan = etKeterangan.text.toString()
+                val months = resources.getStringArray(R.array.months)
+                val month = months[datePicker.month]
+                val tanggal =
+                    datePicker.dayOfMonth.toString() + " $month " + datePicker.year.toString()
+                val jam = timePicker.hour.toString() + ":" + timePicker.minute.toString()
+
+                if ((presensi != "Hadir Tepat Waktu" && keterangan.isNotEmpty()) || presensi == "Hadir Tepat Waktu") {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Presensi berhasil $tanggal jam $jam dengan status $presensi",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }else{
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Presensi gagal, keterangan tidak boleh kosong",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 

@@ -1,10 +1,26 @@
 <resources>
     <string name="app_name">Presensi</string>
+    <string name="presensi">Presensi</string>
+    <string name="keterangan">Keterangan</string>
+    <string name="submit">Submit</string>
     <array name="presensi">
         <item>Hadir Tepat Waktu</item>
         <item>Sakit</item>
         <item>Terlambat</item>
         <item>Izin</item>
     </array>
-    <string name="tes">TESSS <font color="#FF0000">TES2</font> tES3</string>
+    <array name="months">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </array>
 </resources>
